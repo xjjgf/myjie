@@ -1,0 +1,244 @@
+/**
+ * 节日氛围装饰样式
+ * 添加各种新年和节日元素，增强视觉效果
+ */
+
+/* 装饰星星 */
+.decoration-star {
+  position: fixed;
+  background: radial-gradient(circle, #ffffff, rgba(255, 255, 255, 0.6));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* 星星闪烁动画 */
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 15px #ffffff, 0 0 25px rgba(255, 255, 255, 0.7); }
+}
+
+/* 气球装饰 */
+.decoration-balloon {
+  position: fixed;
+  font-size: 3rem;
+  pointer-events: none;
+  z-index: 3;
+  animation: float-up linear infinite;
+  opacity: 0.8;
+}
+
+/* 气球上升动画 */
+@keyframes float-up {
+  0% { 
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { 
+    transform: translateY(-100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* 彩带装饰 */
+.decoration-ribbon {
+  position: fixed;
+  background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+  height: 3px;
+  pointer-events: none;
+  z-index: 4;
+  transform-origin: top left;
+  opacity: 0.6;
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* 彩带飘落动画 */
+@keyframes ribbon-fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg) translateX(var(--ribbon-x-offset));
+    opacity: 0;
+  }
+}
+
+/* 装饰灯 */
+.decoration-light {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* 灯闪烁动画 */
+@keyframes light-blink {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 15px var(--accent-color); }
+}
+
+/* 新年挂饰 */
+.decoration-hanging {
+  position: fixed;
+  transform-origin: top center;
+  pointer-events: none;
+  z-index: 4;
+  animation: hanging-swing ease-in-out infinite;
+}
+
+/* 挂饰摆动动画 */
+@keyframes hanging-swing {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+/* 倒计时周围的装饰光环 */
+.countdown-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, 
+    rgba(255, 0, 128, 0.1) 0%, 
+    rgba(0, 195, 255, 0.1) 50%, 
+    transparent 100%);
+  animation: aura-pulse ease-in-out infinite;
+}
+
+/* 光环脉冲动画 */
+@keyframes aura-pulse {
+  0%, 100% { 
+    width: 100%; 
+    height: 100%;
+    opacity: 0.3;
+  }
+  50% { 
+    width: 120%; 
+    height: 120%;
+    opacity: 0.6;
+  }
+}
+
+/* 装饰礼物盒 */
+.decoration-gift {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  z-index: 3;
+  animation: gift-bounce ease-in-out infinite;
+}
+
+@keyframes gift-bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+/* 背景渐变动画 */
+@keyframes background-shift {
+  0% { 
+    background: linear-gradient(135deg, 
+      rgba(0, 0, 0, 0.9) 0%, 
+      rgba(20, 10, 40, 0.8) 50%, 
+      rgba(0, 0, 0, 0.9) 100%);
+  }
+  50% { 
+    background: linear-gradient(135deg, 
+      rgba(0, 0, 0, 0.9) 0%, 
+      rgba(40, 10, 20, 0.8) 50%, 
+      rgba(0, 0, 0, 0.9) 100%);
+  }
+  100% { 
+    background: linear-gradient(135deg, 
+      rgba(0, 0, 0, 0.9) 0%, 
+      rgba(20, 10, 40, 0.8) 50%, 
+      rgba(0, 0, 0, 0.9) 100%);
+  }
+}
+
+/* 应用背景渐变动画 */
+body {
+  animation: background-shift 20s ease-in-out infinite;
+}
+
+/* 按钮节日效果 */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-color), transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+  opacity: 0.3;
+}
+
+/* 倒计时完成时的全屏闪光效果 */
+@keyframes flash-screen {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.5; }
+}
+
+.screen-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9999;
+  pointer-events: none;
+  animation: flash-screen 0.5s ease;
+}
+
+/* 爆竹爆炸动画 */
+@keyframes firecracker-burst {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    scale: 0.8;
+  }
+  40% {
+    transform: translateY(-100px) rotate(180deg);
+    opacity: 1;
+    scale: 1.2;
+  }
+  60% {
+    transform: translateY(-200px) rotate(360deg);
+    opacity: 1;
+    scale: 1.5;
+  }
+  80% {
+    transform: translateY(-300px) rotate(540deg);
+    opacity: 0.8;
+    scale: 1.2;
+  }
+  100% {
+    transform: translateY(-400px) rotate(720deg);
+    opacity: 0;
+    scale: 0.5;
+  }
+}

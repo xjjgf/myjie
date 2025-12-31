@@ -1,0 +1,357 @@
+/**
+ * 中国风相册样式增强
+ * 为相册页面添加传统中国元素的设计
+ */
+
+/* 中国风相册容器样式 */
+.chinese-style-gallery {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--cny-gold);
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(236, 201, 75, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.chinese-style-gallery::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(236, 201, 75, 0.1) 50%,
+    transparent 100%
+  );
+  z-index: -1;
+  animation: gold-shine 4s ease-in-out infinite;
+}
+
+/* 中国风相册内容样式 */
+.gallery-content {
+  border: 1px solid var(--cny-gold);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  position: relative;
+}
+
+.gallery-content::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(236, 201, 75, 0.2);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* 相册图片容器样式 */
+.photo-container {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid var(--cny-red);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(229, 62, 62, 0.1), rgba(0, 0, 0, 0.3));
+  padding: 10px;
+}
+
+.photo-container::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid rgba(236, 201, 75, 0.3);
+  pointer-events: none;
+}
+
+/* 中国风图片框架 */
+.photo-frame {
+  position: relative;
+  display: inline-block;
+}
+
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 2px solid var(--cny-gold);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 5;
+  animation: gold-shine 3s ease-in-out infinite;
+}
+
+/* 相册图片样式 */
+.photo-container img {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 4px;
+  border: 1px solid rgba(236, 201, 75, 0.5);
+  transition: all 0.3s ease;
+}
+
+.photo-container img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(236, 201, 75, 0.4);
+}
+
+/* 图片标题样式 */
+.photo-title {
+  font-family: 'SimSun', serif;
+  color: var(--cny-gold);
+  text-align: center;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--cny-gold);
+  border-radius: 6px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(236, 201, 75, 0.5);
+}
+
+/* 图片描述样式 */
+.photo-description {
+  font-family: 'SimSun', serif;
+  color: #ccc;
+  text-align: center;
+  margin-top: 8px;
+  padding: 8px 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(236, 201, 75, 0.3);
+  border-radius: 6px;
+  letter-spacing: 1px;
+}
+
+/* 中国风相册控制区域样式 */
+.gallery-controls {
+  position: relative;
+  margin-top: 30px;
+}
+
+.gallery-controls::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cny-gold) 50%,
+    transparent 100%
+  );
+  z-index: -1;
+}
+
+/* 中国风页码指示器 */
+.page-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--cny-gold);
+  border-radius: 20px;
+}
+
+.page-indicator .page-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(236, 201, 75, 0.3);
+  border: 1px solid var(--cny-gold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-indicator .page-dot.active {
+  background: var(--cny-gold);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(236, 201, 75, 0.8);
+}
+
+.page-indicator .page-dot:hover:not(.active) {
+  background: rgba(236, 201, 75, 0.5);
+  transform: scale(1.1);
+}
+
+/* 中国风图片过渡动画 */
+@keyframes chinese-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.chinese-fade-in {
+  animation: chinese-fade-in 0.8s ease-out;
+}
+
+/* 中国传统装饰角 */
+.photo-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: var(--cny-gold);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.corner-top-left {
+  top: 5px;
+  left: 5px;
+  border-width: 3px 0 0 3px;
+}
+
+.corner-top-right {
+  top: 5px;
+  right: 5px;
+  border-width: 3px 3px 0 0;
+}
+
+.corner-bottom-left {
+  bottom: 5px;
+  left: 5px;
+  border-width: 0 0 3px 3px;
+}
+
+.corner-bottom-right {
+  bottom: 5px;
+  right: 5px;
+  border-width: 0 3px 3px 0;
+}
+
+/* 相册返回按钮样式 */
+.btn-home {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, rgba(229, 62, 62, 0.2), rgba(220, 38, 38, 0.2));
+  border: 2px solid var(--cny-red);
+  color: var(--cny-gold);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: 'SimSun', serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.btn-home:hover {
+  background: linear-gradient(135deg, rgba(229, 62, 62, 0.3), rgba(220, 38, 38, 0.3));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 62, 62, 0.4);
+}
+
+/* 中国风相册标题样式 */
+.gallery-title {
+  font-family: 'SimSun', serif;
+  color: var(--cny-gold);
+  text-align: center;
+  margin: 40px 0 30px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, rgba(229, 62, 62, 0.2), rgba(0, 0, 0, 0.4));
+  border: 2px solid var(--cny-gold);
+  border-radius: 10px;
+  letter-spacing: 8px;
+  text-shadow: 0 0 20px rgba(236, 201, 75, 0.6);
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gallery-title::before,
+.gallery-title::after {
+  content: '🎊';
+  margin: 0 10px;
+  opacity: 0.8;
+}
+
+/* 中国风图片加载占位符 */
+.photo-placeholder {
+  width: 100%;
+  height: 50vh;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(40, 10, 10, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--cny-gold);
+  border-radius: 8px;
+}
+
+.photo-placeholder::before {
+  content: '📸';
+  font-size: 4rem;
+  opacity: 0.3;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .chinese-style-gallery {
+    margin: 0 15px;
+    padding: 15px;
+  }
+  
+  .gallery-content {
+    padding: 15px;
+  }
+  
+  .photo-frame::before {
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+  
+  .photo-title {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  .photo-description {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .gallery-title {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    margin: 30px 0 20px;
+  }
+  
+  .page-indicator {
+    gap: 10px;
+  }
+  
+  .page-indicator .page-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .btn-home {
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}

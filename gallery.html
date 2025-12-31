@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨年相册 - 美好瞬间</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/decorations.css">
+    <link rel="stylesheet" href="css/wishes.css">
+    <link rel="stylesheet" href="css/chinese-new-year.css">
+    <link rel="stylesheet" href="css/chinese-animations.css">
+    <link rel="stylesheet" href="css/chinese-gallery.css">
+    <script src="js/config.js" defer></script>
+    <script src="js/fireworks.js" defer></script>
+  <script src="js/gallery.js" defer></script>
+  <script src="js/snowfall.js" defer></script>
+  <script src="js/decorations.js" defer></script>
+    <script src="js/wishes.js" defer></script>
+    <script src="js/chinese-effects.js" defer></script>
+</head>
+<body class="gallery-page">
+    <!-- 中国风边框装饰 -->
+    <div class="chinese-border border-top"></div>
+    <div class="chinese-border border-bottom"></div>
+    <div class="chinese-border border-left"></div>
+    <div class="chinese-border border-right"></div>
+    
+    <!-- 中国结装饰 -->
+    <div class="chinese-knot knot-top-left">🧶</div>
+    <div class="chinese-knot knot-top-right">🧶</div>
+    <div class="chinese-knot knot-bottom-left">🧶</div>
+    <div class="chinese-knot knot-bottom-right">🧶</div>
+    
+    <!-- 灯笼装饰 -->
+    <div class="lantern lantern-left">🏮</div>
+    <div class="lantern lantern-right">🏮</div>
+    
+    <!-- 中国风文字装饰 -->
+    <div class="chinese-wishes wishes-left">恭喜发财万事如意</div>
+    <div class="chinese-wishes wishes-right">新年快乐吉祥如意</div>
+    
+    <!-- 中国传统祥云装饰 -->
+    <div class="chinese-cloud cloud-1">☁️</div>
+    <div class="chinese-cloud cloud-2">☁️</div>
+    <div class="chinese-cloud cloud-3">☁️</div>
+    
+    <!-- 福字装饰 -->
+    <div class="chinese-fu fu-top">福</div>
+    <div class="chinese-fu fu-bottom">福</div>
+    
+    <!-- 背景装饰 -->
+    <div class="new-year-bg"></div>
+    
+    <!-- Canvas烟花背景 -->
+    <canvas id="fireworks-canvas"></canvas>
+    
+    <!-- 返回首页按钮 -->
+    <a href="index.html" class="btn btn-home gradient-text gold-shine-text">返回首页</a>
+    
+    <!-- 相册容器 -->
+    <div id="gallery-container" class="gallery-container chinese-style-gallery">
+        <!-- 相册内容将由JavaScript动态生成 -->
+    </div>
+    
+    <!-- 页面加载提示 -->
+    <noscript>
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+            请启用JavaScript以获得最佳体验！
+        </div>
+    </noscript>
+</body>
+</html>

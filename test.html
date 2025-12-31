@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨年功能测试页面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/decorations.css">
+    <link rel="stylesheet" href="css/wishes.css">
+    <link rel="stylesheet" href="css/new-year-style.css">
+    <script src="js/config.js" defer></script>
+    <script src="js/fireworks.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/snowfall.js" defer></script>
+    <script src="js/decorations.js" defer></script>
+    <script src="js/wishes.js" defer></script>
+    <style>
+        /* 测试页面样式 */
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .test-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 8px;
+        }
+        
+        .test-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .test-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .test-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-success {
+            background: #4CAF50;
+        }
+        
+        .status-pending {
+            background: #FF9800;
+        }
+        
+        .feature-status {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas烟花背景 -->
+    <canvas id="fireworks-canvas"></canvas>
+    
+    <div class="test-container">
+        <h1 style="text-align: center; color: white; margin-bottom: 30px;">跨年功能测试</h1>
+        
+        <!-- 雪花效果测试 -->
+        <div class="test-section">
+            <h2 class="test-title">雪花效果测试</h2>
+            <div class="test-buttons">
+                <button class="test-btn" onclick="toggleSnowTest()">切换雪花显示</button>
+                <button class="test-btn" onclick="intensifySnowTest()">增强雪花效果</button>
+                <button class="test-btn" onclick="normalizeSnowTest()">恢复正常雪花</button>
+            </div>
+            <div class="feature-status">
+                <span class="status-indicator status-pending"></span>
+                <span id="snow-status">等待初始化...</span>
+            </div>
+        </div>
+        
+        <!-- 祝福弹窗测试 -->
+        <div class="test-section">
+            <h2 class="test-title">祝福弹窗测试</h2>
+            <div class="test-buttons">
+                <button class="test-btn" onclick="showRandomWishTest()">显示随机祝福</button>
+                <button class="test-btn" onclick="showSpecialWishTest()">显示特别祝福</button>
+            </div>
+            <div class="feature-status">
+                <span class="status-indicator status-pending"></span>
+                <span id="wish-status">等待初始化...</span>
+            </div>
+        </div>
+        
+        <!-- 倒计时测试 -->
+        <div class="test-section">
+            <h2 class="test-title">倒计时测试</h2>
+            <div class="test-buttons">
+                <button class="test-btn" onclick="testCountdownComplete()">模拟倒计时完成</button>
+            </div>
+            <div class="feature-status">
+                <span class="status-indicator status-pending"></span>
+                <span id="countdown-status">等待初始化...</span>
+            </div>
+        </div>
+        
+        <!-- 烟花效果测试 -->
+        <div class="test-section">
+            <h2 class="test-title">烟花效果测试</h2>
+            <div class="test-buttons">
+                <button class="test-btn" onclick="fireOneFireworkTest()">发射单个烟花</button>
+                <button class="test-btn" onclick="fireMultipleFireworksTest()">发射多个烟花</button>
+                <button class="test-btn" onclick="toggleAutoFireworksTest()">切换自动发射</button>
+            </div>
+            <div class="feature-status">
+                <span class="status-indicator status-pending"></span>
+                <span id="fireworks-status">等待初始化...</span>
+            </div>
+        </div>
+        
+        <!-- 装饰元素测试 -->
+        <div class="test-section">
+            <h2 class="test-title">装饰元素测试</h2>
+            <div class="test-buttons">
+                <button class="test-btn" onclick="toggleDecorationsTest()">切换装饰显示</button>
+            </div>
+            <div class="feature-status">
+                <span class="status-indicator status-pending"></span>
+                <span id="decorations-status">等待初始化...</span>
+            </div>
+        </div>
+        
+        <!-- 导航按钮 -->
+        <div class="test-section">
+            <h2 class="test-title">导航</h2>
+            <div class="test-buttons">
+                <a href="index.html" class="test-btn">返回首页</a>
+                <a href="gallery.html" class="test-btn">查看相册</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 等待所有模块加载完成
+        window.addEventListener('load', () => {
+            // 检查并更新雪花效果状态
+            if (window.snowfall) {
+                document.getElementById('snow-status').innerHTML = '雪花效果已加载';
+                document.querySelector('#snow-status').previousElementSibling.className = 'status-indicator status-success';
+            }
+            
+            // 检查并更新祝福弹窗状态
+            if (window.newYearWishes) {
+                document.getElementById('wish-status').innerHTML = '祝福弹窗已加载';
+                document.querySelector('#wish-status').previousElementSibling.className = 'status-indicator status-success';
+            }
+            
+            // 检查并更新倒计时状态
+            if (window.countdown) {
+                document.getElementById('countdown-status').innerHTML = '倒计时功能已加载';
+                document.querySelector('#countdown-status').previousElementSibling.className = 'status-indicator status-success';
+            }
+            
+            // 检查并更新烟花效果状态
+            if (window.fireworks) {
+                document.getElementById('fireworks-status').innerHTML = '烟花效果已加载';
+                document.querySelector('#fireworks-status').previousElementSibling.className = 'status-indicator status-success';
+            }
+            
+            // 检查并更新装饰元素状态
+            if (window.decorations) {
+                document.getElementById('decorations-status').innerHTML = '装饰元素已加载';
+                document.querySelector('#decorations-status').previousElementSibling.className = 'status-indicator status-success';
+            }
+        });
+        
+        // 雪花测试函数
+        function toggleSnowTest() {
+            if (window.snowfall) {
+                window.snowfall.toggleVisibility();
+            } else {
+                alert('雪花模块尚未加载');
+            }
+        }
+        
+        function intensifySnowTest() {
+            if (window.snowfall) {
+                window.snowfall.intensifySnowfall(3);
+            } else {
+                alert('雪花模块尚未加载');
+            }
+        }
+        
+        function normalizeSnowTest() {
+            if (window.snowfall) {
+                window.snowfall.normalizeSnowfall();
+            } else {
+                alert('雪花模块尚未加载');
+            }
+        }
+        
+        // 祝福弹窗测试函数
+        function showRandomWishTest() {
+            if (window.newYearWishes) {
+                window.newYearWishes.showRandomWish();
+            } else {
+                alert('祝福弹窗模块尚未加载');
+            }
+        }
+        
+        function showSpecialWishTest() {
+            if (window.newYearWishes) {
+                window.newYearWishes.showSpecialWish();
+            } else {
+                alert('祝福弹窗模块尚未加载');
+            }
+        }
+        
+        // 倒计时测试函数
+        function testCountdownComplete() {
+            if (window.countdown && window.countdown.showCompletedMessage) {
+                window.countdown.showCompletedMessage();
+            } else {
+                alert('倒计时模块尚未加载');
+            }
+        }
+        
+        // 装饰元素测试函数
+        function toggleDecorationsTest() {
+            if (window.decorations && window.decorations.toggleVisibility) {
+                window.decorations.toggleVisibility();
+            } else {
+                alert('装饰元素模块尚未加载');
+            }
+        }
+        
+        // 烟花效果测试函数
+        function fireOneFireworkTest() {
+            if (window.fireworks) {
+                const canvas = document.getElementById('fireworks-canvas');
+                window.fireworks.launchFirework(
+                    Math.random() * canvas.width,
+                    canvas.height,
+                    Math.random() * canvas.width,
+                    Math.random() * (canvas.height * 0.6) + canvas.height * 0.05,
+                    true
+                );
+            } else {
+                alert('烟花模块尚未加载');
+            }
+        }
+        
+        function fireMultipleFireworksTest() {
+            if (window.fireworks) {
+                const canvas = document.getElementById('fireworks-canvas');
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        window.fireworks.launchFirework(
+                            Math.random() * canvas.width,
+                            canvas.height,
+                            Math.random() * canvas.width,
+                            Math.random() * (canvas.height * 0.6) + canvas.height * 0.05,
+                            true
+                        );
+                    }, i * 200);
+                }
+            } else {
+                alert('烟花模块尚未加载');
+            }
+        }
+        
+        // 切换自动发射功能（模拟）
+        function toggleAutoFireworksTest() {
+            alert('自动发射功能由烟花模块内部管理，无法通过外部直接切换。');
+        }
+    </script>
+</body>
+</html>
