@@ -81,7 +81,33 @@ git push -u origin main
 
 然后按照方法一中的步骤3-7开启GitHub Pages功能。
 
-### 方案三：Vercel（全球访问速度快）
+### 方案三：Cloudflare Pages（推荐，全球最快）
+
+Cloudflare Pages提供全球最快的CDN加速，完全免费，无需实名认证。
+
+#### 方法一：通过Cloudflare网站（推荐）
+
+1. 访问 https://pages.cloudflare.com 并注册/登录账号（推荐使用GitHub登录）
+2. 点击「Create a project」
+3. 选择「Connect to Git」→「Add account」→授权GitHub
+4. 在仓库列表中选择 `xjjgf/myjie`
+5. 配置构建设置：
+   - **Project name**: myjie（或您喜欢的名称）
+   - **Production branch**: main
+   - **Build command**: 留空（静态网站无需构建）
+   - **Build output directory**: 留空（根目录）
+6. 点击「Save and Deploy」
+7. 等待1-2分钟，部署完成后访问：`https://myjie.pages.dev`
+
+#### 方法二：直接上传（无需Git）
+
+1. 访问 https://pages.cloudflare.com
+2. 点击「Create a project」→「Direct Upload」
+3. 将项目所有文件打包成ZIP
+4. 上传ZIP文件
+5. 点击「Deploy Site」
+
+### 方案四：Vercel（全球访问速度快）
 
 Vercel提供全球CDN加速，访问速度极快。
 
@@ -95,11 +121,12 @@ Vercel提供全球CDN加速，访问速度极快。
 
 ### 方案对比
 
-| 平台 | 国内访问速度 | 免费额度 | 自定义域名 | 推荐场景 |
-|------|------------|---------|-----------|---------|
-| Gitee Pages | ⭐⭐⭐⭐⭐ | 无限制 | 支持 | 中国用户首选 |
-| GitHub Pages | ⭐⭐ | 无限制 | 支持 | 全球用户 |
-| Vercel | ⭐⭐⭐ | 100GB/月 | 支持 | 追求速度 |
+| 平台 | 国内访问速度 | 免费额度 | 自定义域名 | 实名认证 | 推荐场景 |
+|------|------------|---------|-----------|---------|---------|
+| Cloudflare Pages | ⭐⭐⭐⭐ | 无限制 | 支持 | ❌不需要 | 全球用户首选 |
+| Vercel | ⭐⭐⭐ | 100GB/月 | 支持 | ❌不需要 | 追求速度 |
+| GitHub Pages | ⭐⭐ | 无限制 | 支持 | ❌不需要 | 全球用户 |
+| Gitee Pages | ⭐⭐⭐⭐⭐ | 无限制 | 支持 | ✅需要 | 中国用户 |
 
 ## 自定义配置
 
