@@ -23,9 +23,34 @@
 2. 刷新 `gallery.html` 页面，照片将自动显示在相册中
 3. 点击照片可进入全屏预览模式，支持左右箭头切换和ESC退出
 
-## 发布到GitHub Pages
+## 发布到静态网站
 
-### 方法一：通过GitHub网站（推荐新手）
+### 方案一：Gitee Pages（推荐中国用户）
+
+Gitee Pages是国内访问速度最快的免费静态网站托管服务。
+
+1. 访问 https://gitee.com 并注册/登录账号
+2. 点击右上角「+」→「新建仓库」
+3. 填写仓库名称（如：myjie），选择「公开」，点击「创建」
+4. 在仓库页面点击「克隆/下载」，复制仓库地址
+5. 在本地项目目录执行：
+   ```bash
+   git init
+   git remote add origin https://gitee.com/您的用户名/您的仓库名.git
+   git add .
+   git commit -m "Initial commit"
+   git push -u origin master
+   ```
+6. 推送成功后，进入仓库页面
+7. 点击「服务」→「Gitee Pages」
+8. 选择部署分支为「master」，点击「启动」
+9. 等待1-2分钟，您的网站地址为：`https://您的用户名.gitee.io/您的仓库名`
+
+### 方案二：GitHub Pages
+
+GitHub Pages是全球流行的免费静态网站托管服务。
+
+#### 方法一：通过GitHub网站（推荐新手）
 
 1. 在GitHub上创建一个新的仓库
 2. 点击「上传文件」按钮，将项目所有文件上传到仓库
@@ -35,7 +60,7 @@
 6. 点击「Save」按钮
 7. 等待几秒钟，刷新页面，即可看到您的网站地址！
 
-### 方法二：使用Git命令行
+#### 方法二：使用Git命令行
 
 ```bash
 # 初始化Git仓库
@@ -51,10 +76,30 @@ git add .
 git commit -m "Initial commit"
 
 # 推送到GitHub
-git push -u origin master
+git push -u origin main
 ```
 
 然后按照方法一中的步骤3-7开启GitHub Pages功能。
+
+### 方案三：Vercel（全球访问速度快）
+
+Vercel提供全球CDN加速，访问速度极快。
+
+1. 访问 https://vercel.com 并注册/登录账号（推荐使用GitHub登录）
+2. 点击「Add New...」→「Project」
+3. 在「Import Git Repository」中选择您的GitHub仓库
+4. 点击「Import」
+5. Framework Preset选择「Other」，其他保持默认
+6. 点击「Deploy」
+7. 部署完成后，访问 `https://您的仓库名.vercel.app`
+
+### 方案对比
+
+| 平台 | 国内访问速度 | 免费额度 | 自定义域名 | 推荐场景 |
+|------|------------|---------|-----------|---------|
+| Gitee Pages | ⭐⭐⭐⭐⭐ | 无限制 | 支持 | 中国用户首选 |
+| GitHub Pages | ⭐⭐ | 无限制 | 支持 | 全球用户 |
+| Vercel | ⭐⭐⭐ | 100GB/月 | 支持 | 追求速度 |
 
 ## 自定义配置
 
